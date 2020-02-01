@@ -16,7 +16,7 @@ This command will compress the video file. To reduce the video's file size, you 
 
 ![example testVideo.mp4 information in command line](assets/testVideoInfo.png)
 
-## Trim a video
+## Trim a video's length
 
 ### `ffmpeg -i testVideo.mp4 -ss 00:00:14 -codec copy -t 8 shortenedTestVideo.mp4`
 
@@ -29,6 +29,12 @@ This command will trim a video clip to a shorter time. It takes an input `-i` te
 This command will create frames from a video. `-i` flags the input video. `-r` sets the framerate, i.e. 100 frames per second. `-f` sets the output format and creates the files. In this case, `testVideo.mp4` is 8 seconds long, at an `-r` of 100 it will extract and output **800** new images created from frames of the inputted video titled `image-01.png` all the way to approximately `image-800.png`.  
 
 **To save space, you can also output images to `.bmp` file format.**
+
+## Remove the audio stream from a video file
+
+### `ffmpeg -i testVideo.mp4 -an testVideoOutput.mp4`
+
+This command will remove the audio stream from a video file. To perform this action simply use `-an` and specify and output video file name and file format.
 
 ## Test/Preview video
 
@@ -59,6 +65,14 @@ This command will increase the playback speed of a video. `"setspts=0.5*PTS"` wi
 ### `ffmpeg -t testVideo.mp4 outputVideo.avi`
 
 This command will change the file format of the `-i` flagged video. `outputVideo.avi` is an argument with both the new file's name and file format.
+
+## Crop a video
+
+### `ffmpeg -i testVideo.mp4 -filter:v "crop=w:h:x:y" testVideoOutput.mp4`
+
+This command will crop a video to specified dimensions based on multiple arguments. This command takes several key arguments: 
+
+To crop `testVideo.mp4` indicate the video filter using `-filter:v`, the filter being `"crop=w:h:x:y"`. To use the crop filter, specify the `w`idth and `h`eight of the rectangle you want to crop from `testVideo.mp4`. The arguments `x` and `y` specify the coordinate where you want to begin cropping from. A command to crop a 4K video to a `width` of 1280 pixels and a `height` of 720 pixels from the `position` (800, 200) would be `ffmpeg -i testVideo.mp4 -filter:v "crop=1280:720:800:200" testVideoOutput.mp4`.
 
 ## Change the resolution of a video
 
