@@ -1,14 +1,14 @@
 # ffmpeg notes
 
-# **Useful Commands**
+# **Useful Commands**  
 
-## View information about a video or audio file
+# View information about a video or audio file
 
 ### `ffmpeg -i testVideo.mp4` or `ffprobe testVideo.mp4`
 
 This command will display details about the particular media file. For an audio file, `ffmpeg -i testAudioTrack.mp3`.
 
-## Compress a video file
+# Compress a video file
 
 ### `ffmpeg -i testVideo.mp4 -vf scale=1280:-1 -c:v libx264 -preset veryslow -crf 24 testVideoOutput.mp4`
 
@@ -16,13 +16,13 @@ This command will compress the video file. To reduce the video's file size, you 
 
 ![example testVideo.mp4 information in command line](assets/testVideoInfo.png)
 
-## Trim a video's length
+# Trim a video's length
 
 ### `ffmpeg -i testVideo.mp4 -ss 00:00:14 -codec copy -t 8 shortenedTestVideo.mp4`
 
 This command will trim a video clip to a shorter time. It takes an input `-i` testVideo.mp4 and at `-ss` 00:00:14 creates an 8 second shortenedTestVideo.mp4. The flag `-ss` indicates the starting second of the clip, and `-t` indicates how long we want to trim the clip down to, in our case 8 seconds.
 
-## Extract frames from a video
+# Extract frames from a video
 
 ### `ffmpeg -i testVideo.mp4 -r 100 -f image2 image-%2d.png`
 
@@ -30,43 +30,43 @@ This command will create frames from a video. `-i` flags the input video. `-r` s
 
 **To save space, you can also output images to `.bmp` file format.**
 
-## Remove the audio stream from a video file
+# Remove the audio stream from a video file
 
 ### `ffmpeg -i testVideo.mp4 -an testVideoOutput.mp4`
 
 This command will remove the audio stream from a video file. To perform this action simply use `-an` and specify and output video file name and file format.
 
-## Test/Preview video
+# Test/Preview video
 
 ### `ffplay testVideo.mp4`
 
 This command will preview a video in your system's default player.
 
-## Test/Preview audio track
+# Test/Preview audio track
 
 ### `ffplay testAudio.mp3`
 
 This command will preview an audio track in your system's default player.
 
-## Decrease video playback speed
+# Decrease video playback speed
 
 ### `ffmpeg -i testVideo.mp4 -vf "setpts=4.0*PTS" playbackDecreased.mp4`
 
 This command will decrease the playback speed of a video. `"setpts=4.0*PTS"` To decrease the playback speed of a video, your must multiply by a number that is **greater than** 1, i.e. your value in `num*PTS"`.
 
-## Increase video playback speed
+# Increase video playback speed
 
 ### `ffmpeg -i testVideo.mp4 -vf "setpts=0.5*PTS" playbackIncreased.mp4`
 
 This command will increase the playback speed of a video. `"setspts=0.5*PTS"` will double the speed of your video. To increase the speed of your video, you must multiply by a number **less than** 1, i.e. your value in `num*PTS`.
 
-## Convert a video file to a different format
+# Convert a video file to a different format
 
 ### `ffmpeg -t testVideo.mp4 outputVideo.avi`
 
 This command will change the file format of the `-i` flagged video. `outputVideo.avi` is an argument with both the new file's name and file format.
 
-## Crop a video
+# Crop a video
 
 ### `ffmpeg -i testVideo.mp4 -filter:v "crop=w:h:x:y" testVideoOutput.mp4`
 
@@ -74,7 +74,7 @@ This command will crop a video to specified dimensions based on multiple argumen
 
 To crop `testVideo.mp4` indicate the video filter using `-filter:v`, the filter being `"crop=w:h:x:y"`. To use the crop filter, specify the `w`idth and `h`eight of the rectangle you want to crop from `testVideo.mp4`. The arguments `x` and `y` specify the coordinate where you want to begin cropping from. A command to crop a 4K video to a `width` of 1280 pixels and a `height` of 720 pixels from the `position` (800, 200) would be `ffmpeg -i testVideo.mp4 -filter:v "crop=1280:720:800:200" testVideoOutput.mp4`.
 
-## Change the resolution of a video
+# Change the resolution of a video
 
 ### `ffmpeg -i testVideo.mp4 -s 1280x720 -c:a copy testVideoOutput.mp4`
 
