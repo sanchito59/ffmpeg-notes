@@ -14,7 +14,7 @@ This command will display details about the particular media file. For an audio 
 
 This command will compress the video file. To reduce the video's file size, you can specify a preset using an argument like `-preset veryslow`. This command does not destroy or alter the original video file- you must specify an output file name and format, such as `testVideoOutput.mp4` in the example.
 
-![example testVideo.mp4 information in command line](testVideoInfo.png)
+![example testVideo.mp4 information in command line](assets/testVideoInfo.png)
 
 ## Trim a video
 
