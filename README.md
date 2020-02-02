@@ -8,13 +8,14 @@
 
 This command will display details about the particular media file. For an audio file, `ffmpeg -i testAudioTrack.mp3`.
 
+![example testVideo.mp4 information in command line](assets/testVideoInfo.png)
+
 # Compress a video file
 
 ### `ffmpeg -i testVideo.mp4 -vf scale=1280:-1 -c:v libx264 -preset veryslow -crf 24 testVideoOutput.mp4`
 
 This command will compress the video file. To reduce the video's file size, you can specify a preset using an argument like `-preset veryslow`. This command does not destroy or alter the original video file- you must specify an output file name and format, such as `testVideoOutput.mp4` in the example.
 
-![example testVideo.mp4 information in command line](assets/testVideoInfo.png)
 
 # Trim a video's length
 
